@@ -2426,12 +2426,17 @@
 				}
 			}
 
+			var textSpan = document.createElement('span');
+			textSpan.className = "jstree-text";
+
 			if(this.settings.core.force_text) {
-				node.childNodes[1].appendChild(d.createTextNode(obj.text));
+				textSpan.appendChild(d.createTextNode(obj.text));
 			}
 			else {
-				node.childNodes[1].innerHTML += obj.text;
+				textSpan.innerHTML += obj.text;
 			}
+
+			node.childNodes[1].appendChild(textSpan);
 
 
 			if(deep && obj.children.length && (obj.state.opened || force_render) && obj.state.loaded) {
